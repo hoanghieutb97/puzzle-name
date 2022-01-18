@@ -3,6 +3,40 @@
     padding: 0;
 }
 
+.ctn-all-line {
+    display: flex;
+    justify-content: center;
+}
+
+.all-line {
+    display: inline-flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px;
+    background: url(https://res.cloudinary.com/hieudz/image/upload/v1642499459/puzzle-name/background-puzzle.jpg);
+    border-radius: 29px;
+    background-size: cover;
+}
+
+.one-line {
+    display: inline-block;
+  
+}
+
+.oneline-mt-1 {
+    margin-top: 12px;
+}
+
+svg#Layer_1 {
+    height: 100%;
+}
+
+.onbe-letter {
+    height: 100px !important;
+    display: inline-block;
+    margin-right: 12px;
+}
+
 .input {
     position: relative;
     font-size: 1.2em;

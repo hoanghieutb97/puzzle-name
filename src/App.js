@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import * as constants from "./constants";
+import Showpuzzle from './components/Showpuzzle';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -27,19 +28,16 @@ export default function App() {
     <div>
       <div className="container-fluid">
         {name.join("")}
-        <div className="hjghj">
-          {constants.b}
 
-        </div>
-        <svg class="symb">
+        {/* <svg className="symb">
           {constants.a}
-        </svg>
+        </svg> */}
 
       </div>
       <div className="container-fluid">
         <div className="row">
           <div className="col-9">
-            custom-image
+            <Showpuzzle name={name} />
           </div>
           <div className="col-3">
             <div className="row">

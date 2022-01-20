@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import * as constants from "./constants";
 import Showpuzzle from './components/Showpuzzle';
+import GallerySelectAnimal from './components/GallerySelectAnimal'
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -17,7 +18,10 @@ export default function App() {
   const [colorName, setColorName] = useState(constants.ListColor[0]);
 
   const [price, setPrice] = useState(0);
-
+  const [expanded, setExpanded] = React.useState('panel1');
+  const handleChange = (panel) => (event, newExpanded) => {
+    setExpanded(newExpanded ? panel : false);
+  };
 
   let deleteLine = (key) => {
     let namedefault = [...name];
@@ -28,6 +32,8 @@ export default function App() {
   // console.log(color);
   return (
     <div>
+                {/* <GallerySelectAnimal /> */}
+
       <div className="container-fluid mt-4">
       </div>
       <div className="container-fluid">
@@ -62,7 +68,7 @@ export default function App() {
 
               </div>
               <div className="col-12">
-                <Accordion className="back-custom">
+                <Accordion className="back-custom" expanded={expanded === 'panel1'} aria-controls="panel1a-content" id="panel1a-header" onChange={handleChange('panel1')}>
                   <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
                     <Typography> Customize</Typography>
                   </AccordionSummary>
@@ -73,20 +79,12 @@ export default function App() {
 
 
                     {/* Colors */}
-                    <Accordion>
-                      <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
-                        <Typography> Colors</Typography>
-                      </AccordionSummary>
-                      <AccordionDetails>
-                        <LetterColor colorName={colorName} changeActiveColorName={(colorName) => setColorName(colorName)} />
-                      </AccordionDetails>
-                    </Accordion>
-                  </AccordionDetails>
-                </Accordion>
-
+                    <LetterColor colorName={colorName} changeActiveColorName={(colorName) => setColorName(colorName)} />
 
                     {/* AboutItemAndPolicy */}
-                <AboutItemAndPolicy />
+                    <AboutItemAndPolicy />
+                  </AccordionDetails >
+                </Accordion >
               </div>
             </div>
           </div>

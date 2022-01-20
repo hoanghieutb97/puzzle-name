@@ -85,11 +85,11 @@ export default function GallerySelectAnimal() {
                     </div>
                     {/* end content */}
                 </DialogContent>
-                <DialogActions>
+                {/* <DialogActions>
                     <Button autoFocus onClick={handleClose}>
                         Save changes
                     </Button>
-                </DialogActions>
+                </DialogActions> */}
             </BootstrapDialog>
         </div>
     );

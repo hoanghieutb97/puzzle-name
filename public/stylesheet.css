@@ -3,6 +3,11 @@
     padding: 0;
 }
 
+.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation24.MuiDialog-paper.MuiDialog-paperScrollPaper.MuiDialog-paperWidthSm.css-1t1j96h-MuiPaper-root-MuiDialog-paper {
+    max-width: 800px;
+    max-height: 80vh;
+}
+
 .ctn-list-animal {
     /* background: #efefef; */
 }

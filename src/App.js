@@ -15,6 +15,7 @@ import InputName from './components/InPutName';
 import AboutItemAndPolicy from './components/AboutItemAndPolicy';
 export default function App() {
   const [name, setName] = useState([[]]);
+  const [animal, setAnimal] = useState([[], [null, null], [null, null], [null, null], []]); // tren - 1-2 -3-duoi
   const [colorName, setColorName] = useState(constants.ListColor[0]);
 
   const [price, setPrice] = useState(0);
@@ -29,10 +30,16 @@ export default function App() {
     if (namedefault.length === 0) namedefault = [[]]
     setName(namedefault)
   }
-  // console.log(color);
+  let showAnimal = (nameAnimal, selectAnimal) => {
+    let animalNew = [...animal];
+    if (selectAnimal[1] === "left") animalNew[selectAnimal[0] + 1][0] = nameAnimal;
+    else animalNew[selectAnimal[0] + 1][1] = nameAnimal;
+
+    setAnimal(animalNew)
+  }
   return (
     <div>
-                <GallerySelectAnimal />
+
 
       <div className="container-fluid mt-4">
       </div>
@@ -41,7 +48,7 @@ export default function App() {
           <div className="col-9">
             <div className="row">
               <div className="col-12 showpuzzle">
-                <Showpuzzle name={name} colorName={colorName} />
+                <Showpuzzle name={name} colorName={colorName} animal={animal} />
               </div>
               <div className="col-12 mt-4">
                 <div className="row">
@@ -74,7 +81,7 @@ export default function App() {
                   </AccordionSummary>
                   <AccordionDetails>
                     {/* Text & figures */}
-                    <InputName name={name} deleteLine={(key) => deleteLine(key)} setName={(param) => setName(param)} />
+                    <InputName name={name} showAnimal={(nameAnimal, selectAnimal) => showAnimal(nameAnimal, selectAnimal)} deleteLine={(key) => deleteLine(key)} setName={(param) => setName(param)} />
 
 
 

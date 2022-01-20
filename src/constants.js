@@ -29,3 +29,4 @@ export const ListColor = ["Rainbow", "PastelGirl", "PurplePink"]
 export const Rainbow = ["#d41e2b", "#fc6141", "#ffc445", "#0dd28b", "#0384de", "#2134a6"];
 export const PastelGirl = ["#fbd4e0", "#ffb5b2", "#fbfbfb", "#ffcebd"];
 export const PurplePink = ["#a398cd", "#fbfbfb", "#fbd4e0", "#ffcebd"];
+export const ListAnimal = ["bear", "cat", "chick", "cow", "deer", "diplodocus", "dog", "elephant", "elk", "fox", "frog", "giraffe", "hippo", "horse", "koala", "lion", "monkey", "panda", "parasaurollophus", "pig", "plesiosaurus", "pterodactyl", "rabbit", "raccoon", "sheep", "stehosaurus", "tiger", "triceratops", "tyrannosaurus", "velociraptor", "wolf", "z1", "z2", "z3", "z4", "z5", "z6", "z7", "z8", "z9", "z10", "z11", "z12", "z13", "z14", "z15", "z16", "z17", "z18", "z19", "z20", "z21", "z22", "z23", "z24", "z25", "z26", "z27", "z28", "z30", "z31", "z32", "z33", "z34", "z35", "z36", "z37", "z39", "z40", "zebra"]

@@ -32,7 +32,7 @@ export default function App() {
   // console.log(color);
   return (
     <div>
-                {/* <GallerySelectAnimal /> */}
+                <GallerySelectAnimal />
 
       <div className="container-fluid mt-4">
       </div>
@@ -82,7 +82,7 @@ export default function App() {
                     <LetterColor colorName={colorName} changeActiveColorName={(colorName) => setColorName(colorName)} />
 
                     {/* AboutItemAndPolicy */}
-                    <AboutItemAndPolicy />
+                    {/* <AboutItemAndPolicy /> */}
                   </AccordionDetails >
                 </Accordion >
               </div>

@@ -3,6 +3,23 @@
     padding: 0;
 }
 
+.ctn-list-animal {
+    /* background: #efefef; */
+}
+
+img.img-animal {
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
+    filter: drop-shadow(0 0 1px );
+}
+
+.one-animal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 button.add-animal {
     width: 30px !important;
     height: 30px !important;

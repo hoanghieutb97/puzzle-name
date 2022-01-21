@@ -13,8 +13,9 @@ import LetterColor from './components/LetterColor';
 import GalleryImageBottom from './components/GalleryImageBottom';
 import InputName from './components/InPutName';
 import AboutItemAndPolicy from './components/AboutItemAndPolicy';
+import ArtToCart from './components/ArtToCart';
 export default function App() {
-  const [name, setName] = useState([[]]);
+  const [name, setName] = useState([[], [], []]);
   const [animal, setAnimal] = useState([[], [null, null], [null, null], [null, null], []]); // tren - 1-2 -3-duoi
   const [colorName, setColorName] = useState(constants.ListColor[0]);
 
@@ -31,12 +32,18 @@ export default function App() {
     setName(namedefault)
   }
   let showAnimal = (nameAnimal, selectAnimal) => {
+
     let animalNew = [...animal];
     if (selectAnimal[1] === "left") animalNew[selectAnimal[0] + 1][0] = nameAnimal;
-    else animalNew[selectAnimal[0] + 1][1] = nameAnimal;
+    else if (selectAnimal[1] === "right") animalNew[selectAnimal[0] + 1][1] = nameAnimal;
+    else if (selectAnimal[1] === "top") animalNew[0][selectAnimal[0]] = nameAnimal;
+    else if (selectAnimal[1] === "top-add") animalNew[0] = [...animalNew[0], nameAnimal];
+    else if (selectAnimal[1] === "bottom") animalNew[4][selectAnimal[0]] = nameAnimal;
+    else if (selectAnimal[1] === "bottom-add") animalNew[4] = [...animalNew[4], nameAnimal];
 
     setAnimal(animalNew)
   }
+  // console.log(name);
   return (
     <div>
 
@@ -72,7 +79,7 @@ export default function App() {
           <div className="col-3">
             <div className="row">
               <div className="col-12">
-
+                <ArtToCart animal={animal} name={name} />
               </div>
               <div className="col-12">
                 <Accordion className="back-custom" expanded={expanded === 'panel1'} aria-controls="panel1a-content" id="panel1a-header" onChange={handleChange('panel1')}>
@@ -81,7 +88,7 @@ export default function App() {
                   </AccordionSummary>
                   <AccordionDetails>
                     {/* Text & figures */}
-                    <InputName name={name} showAnimal={(nameAnimal, selectAnimal) => showAnimal(nameAnimal, selectAnimal)} deleteLine={(key) => deleteLine(key)} setName={(param) => setName(param)} />
+                    <InputName name={name} animal={animal} showAnimal={(nameAnimal, selectAnimal) => showAnimal(nameAnimal, selectAnimal)} deleteLine={(key) => deleteLine(key)} setName={(param) => setName(param)} />
 
 
 

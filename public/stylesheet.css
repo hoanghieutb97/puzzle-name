@@ -3,6 +3,49 @@
     padding: 0;
 }
 
+.ctn-animal-show {
+    display: flex;
+    align-items: self-end;
+}
+
+p.p-name-animal {position: absolute;text-transform: capitalize;font-weight: 500;bottom: -16px;margin: 0;}
+
+.ctn-show-animal {
+    position: relative;
+}
+
+img.item-animal-show {
+    max-height: 110px;
+    max-width: 110px;
+    margin: 10px;
+    filter: drop-shadow(1px 1px 1px #000 );
+}
+
+img.img-add-animal-top {
+    max-width: 32px;
+    max-height: 32px;
+}
+
+.ctn-add-animal-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+img.img-add-animal {
+    max-width: 32px;
+    max-height: 32px;
+    margin: 0 4px;
+    cursor: pointer;
+}
+
+img.img-show-animal {
+    max-height: 110px;
+    max-width: 110px;
+    margin: 6px;
+    filter: drop-shadow(1px 1px 1px #000 );
+}
+
 .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation24.MuiDialog-paper.MuiDialog-paperScrollPaper.MuiDialog-paperWidthSm.css-1t1j96h-MuiPaper-root-MuiDialog-paper {
     max-width: 800px;
     max-height: 80vh;
@@ -13,7 +56,8 @@
 }
 
 img.img-animal {
-    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
     padding: 10px;
     cursor: pointer;
     filter: drop-shadow(0 0 1px );
@@ -23,6 +67,7 @@ img.img-animal {
     display: flex;
     align-items: center;
     justify-content: center;
+    max-height: 157px;
 }
 
 button.add-animal {
@@ -192,13 +237,13 @@ svg.trash-line {
 }
 
 .showpuzzle {
-    height: 50vh;
+    height: 72vh;
     position: relative;
     background: #f7f7f7;
 }
 
 img.img-gallery {
-    height: 22VH;
+    height: 15VH;
     cursor: pointer;
 }
 
@@ -246,7 +291,7 @@ svg.active-color {
     display: inline-flex;
     align-items: center;
     flex-direction: column;
-    padding: 30px 18px 30px 30px;
+    padding: 20px;
     background: url(https://res.cloudinary.com/hieudz/image/upload/v1642499459/puzzle-name/background-puzzle.jpg);
     border-radius: 29px;
     background-size: cover;
@@ -255,23 +300,26 @@ svg.active-color {
 
 .one-line {
     display: flex;
+    align-items: end;
+    margin: 10px;
 }
 
 .oneline-mt-1 {
-    margin-top: 12px;
+    /* margin: 12px; */
 }
 
 svg#Layer_1 {
     height: 100%;
-    stroke: #b78756;
-    stroke-width: 4px;
+    /* stroke: #8f8072; */
+    /* stroke-width: 4px; */
     overflow: visible;
+    filter: drop-shadow(1px 1px 1px #000 );
 }
 
 .onbe-letter {
     height: 100px !important;
     display: inline-block;
-    margin-right: 12px;
+    margin: 6px;
 }
 
 .input {

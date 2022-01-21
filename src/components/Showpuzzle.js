@@ -14,6 +14,7 @@ const Showpuzzle = (props) => {
             {/* animal trai */}
             {(animal[key + 1][0] !== null) ? <div className="ctn-show-animal">
                   <img src={`https://res.cloudinary.com/hieudz/image/upload/v1642654904/puzzle-name/animal/${animal[key + 1][0]}.png`} alt="" className="img-show-animal" />
+                  <p className="p-name-animal">{animal[key + 1][0]}</p>
             </div> : ""}
             {/* het animal trai */}
 
@@ -25,6 +26,7 @@ const Showpuzzle = (props) => {
             {/* animal phai */}
             {(animal[key + 1][1] !== null) ? <div className="ctn-show-animal">
                   <img src={`https://res.cloudinary.com/hieudz/image/upload/v1642654904/puzzle-name/animal/${animal[key + 1][1]}.png`} alt="" className="img-show-animal" />
+                  <p className="p-name-animal">{animal[key + 1][1]}</p>
             </div> : ""}
             {/* het animal phai */}
       </div >)
@@ -32,7 +34,23 @@ const Showpuzzle = (props) => {
       return (
             <div className='ctn-all-line'>
                   <div className="all-line">
+                        <div className="ctn-animal-show" >
+                              {(animal[0].length !== 0) ? animal[0].map((item, key) => <div key={key} className="ctn-show-animal">
+                                    <img src={`https://res.cloudinary.com/hieudz/image/upload/v1642654904/puzzle-name/animal/${item}.png`} alt="" className="item-animal-show" />
+                                    <p className="p-name-animal">{item}</p>
+                              </div>
+                              ) : ""}
+                        </div>
+
                         {textAllLine}
+
+                        <div className="ctn-animal-show" >
+                              {(animal[4].length !== 0) ? animal[4].map((item, key) => <div key={key} className="ctn-show-animal">
+                                    <img key={key} src={`https://res.cloudinary.com/hieudz/image/upload/v1642654904/puzzle-name/animal/${item}.png`} alt="" className="item-animal-show" />
+                                    <p className="p-name-animal">{item}</p>
+                              </div>
+                              ) : ""}
+                        </div>
                   </div>
             </div>
       );

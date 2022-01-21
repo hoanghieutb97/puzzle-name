@@ -27,8 +27,9 @@ export default function App() {
 
   let deleteLine = (key) => {
     let namedefault = [...name];
-    namedefault.splice(key, 1);
-    if (namedefault.length === 0) namedefault = [[]]
+    console.log(key);
+
+    namedefault[key]=[];
     setName(namedefault)
   }
   let showAnimal = (nameAnimal, selectAnimal) => {

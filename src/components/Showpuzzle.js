@@ -10,7 +10,7 @@ const Showpuzzle = (props) => {
 
 
       let textAllLine = "";
-      if (name[0].length !== 0) textAllLine = name.map((item, key) => <div className={"one-line" + ((key !== 0) ? " oneline-mt-1" : "")} key={key}>
+      if (name[0].length !== 0) textAllLine = name.map((item, key) => <div className={"one-line" + ((item.length === 0) ? " oneline-hide" : "")} key={key}>
             {/* animal trai */}
             {(animal[key + 1][0] !== null) ? <div className="ctn-show-animal">
                   <img src={`https://res.cloudinary.com/hieudz/image/upload/v1642654904/puzzle-name/animal/${animal[key + 1][0]}.png`} alt="" className="img-show-animal" />
@@ -34,23 +34,24 @@ const Showpuzzle = (props) => {
       return (
             <div className='ctn-all-line'>
                   <div className="all-line">
-                        <div className="ctn-animal-show" >
-                              {(animal[0].length !== 0) ? animal[0].map((item, key) => <div key={key} className="ctn-show-animal">
-                                    <img src={`https://res.cloudinary.com/hieudz/image/upload/v1642654904/puzzle-name/animal/${item}.png`} alt="" className="item-animal-show" />
-                                    <p className="p-name-animal">{item}</p>
-                              </div>
-                              ) : ""}
-                        </div>
-
+                        {(animal[0].length !== 0) ?
+                              <div className="ctn-animal-show" >
+                                    {animal[0].map((item, key) => <div key={key} className="ctn-show-animal">
+                                          <img src={`https://res.cloudinary.com/hieudz/image/upload/v1642654904/puzzle-name/animal/${item}.png`} alt="" className="item-animal-show" />
+                                          <p className="p-name-animal">{item}</p>
+                                    </div>)}
+                              </div> : ""
+                        }
                         {textAllLine}
 
-                        <div className="ctn-animal-show" >
-                              {(animal[4].length !== 0) ? animal[4].map((item, key) => <div key={key} className="ctn-show-animal">
-                                    <img key={key} src={`https://res.cloudinary.com/hieudz/image/upload/v1642654904/puzzle-name/animal/${item}.png`} alt="" className="item-animal-show" />
-                                    <p className="p-name-animal">{item}</p>
-                              </div>
-                              ) : ""}
-                        </div>
+                        {(animal[4].length !== 0) ?
+                              <div className="ctn-animal-show" >
+                                    {animal[4].map((item, key) => <div key={key} className="ctn-show-animal">
+                                          <img key={key} src={`https://res.cloudinary.com/hieudz/image/upload/v1642654904/puzzle-name/animal/${item}.png`} alt="" className="item-animal-show" />
+                                          <p className="p-name-animal">{item}</p>
+                                    </div>)}
+                              </div> : ""
+                        }
                   </div>
             </div>
       );

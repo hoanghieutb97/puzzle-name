@@ -6,7 +6,6 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Button from '@mui/material/Button';
 import * as constants from "./../constants";
-
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
@@ -59,12 +58,18 @@ function InputName(props) {
     const MaxLetter = constants.MaxLetter;
     const [expanded, setExpanded] = useState('panel1');
     let changeLineName = (value, key) => {
-        let arrValue = value.split("");
+        let arrValue = (value.length !== 0) ? value.match(/[a-zA-Z]+/g)[0].toLowerCase() : "";
         if (arrValue.length > MaxLetter) setMaxLetter(true)
-        else {
+        else if (arrValue.length > 0) {
+            arrValue = arrValue.split("");
             if (maxLetter === true) setMaxLetter(false)
             let namedefault = [...props.name];
             namedefault[key] = arrValue;
+            props.setName(namedefault);
+        }
+        else if (value.length === 0) {
+            let namedefault = [...props.name];
+            namedefault[key] = [];
             props.setName(namedefault);
         }
     }
@@ -88,6 +93,7 @@ function InputName(props) {
         setOpen(false);
     }
     let animal = [...props.animal];
+
     return (
         <React.Fragment>
             <Accordion expanded={expanded === 'panel1'} aria-controls="panel1a-content" id="panel1a-header" onChange={handleChange('panel1')}>
@@ -107,13 +113,14 @@ function InputName(props) {
                     <div>
                         <div className="ctn-add-animal-top">
                             {animal[0].map((item, key) => <img className="img-add-animal-top" key={key} onClick={() => handleClickOpen(key, "top")} src={`https://res.cloudinary.com/hieudz/image/upload/v1642654904/puzzle-name/animal/${animal[0][key]}.png`} alt="" />)}
+                            <img onClick={() => handleClickOpen(0, "top-add")} src="https://res.cloudinary.com/hieudz/image/upload/v1642827053/puzzle-name/btn-add.png" alt="add animal" className="add-animal" />
 
-                            <button className="add-animal" onClick={() => handleClickOpen(0, "top-add")}>+</button >
 
                         </div>
 
                         {props.name.map((item, key) => <div className="ctn-one-line-input" key={key} >
-                            {(animal[key + 1][0] === null) ? <button className="add-animal" onClick={() => handleClickOpen(key, "left")}>+</button >
+
+                            {(animal[key + 1][0] === null) ? <img onClick={() => handleClickOpen(key, "left")} src="https://res.cloudinary.com/hieudz/image/upload/v1642827053/puzzle-name/btn-add.png" alt="add animal" className="add-animal" />
                                 : <img className="img-add-animal" onClick={() => handleClickOpen(key, "left")} src={`https://res.cloudinary.com/hieudz/image/upload/v1642654904/puzzle-name/animal/${animal[key + 1][0]}.png`} alt="" />}
 
                             <p className='input-text'>
@@ -127,19 +134,19 @@ function InputName(props) {
                                 </svg>
                             </p>
 
-                            {(animal[key + 1][1] === null) ? <button className="add-animal" onClick={() => handleClickOpen(key, "right")}>+</button >
+                            {(animal[key + 1][1] === null) ? <img onClick={() => handleClickOpen(key, "left")} src="https://res.cloudinary.com/hieudz/image/upload/v1642827053/puzzle-name/btn-add.png" alt="add animal" className="add-animal" />
                                 : <img className="img-add-animal" onClick={() => handleClickOpen(key, "right")} src={`https://res.cloudinary.com/hieudz/image/upload/v1642654904/puzzle-name/animal/${animal[key + 1][1]}.png`} alt="" />}
 
                         </div>)
                         }
                         <div className="ctn-add-animal-top">
                             {animal[4].map((item, key) => <img className="img-add-animal-top" key={key} onClick={() => handleClickOpen(key, "bottom")} src={`https://res.cloudinary.com/hieudz/image/upload/v1642654904/puzzle-name/animal/${animal[4][key]}.png`} alt="" />)}
+                            <img onClick={() => handleClickOpen(0, "bottom-add")} src="https://res.cloudinary.com/hieudz/image/upload/v1642827053/puzzle-name/btn-add.png" alt="add animal" className="add-animal" />
 
-                            <button className="add-animal" onClick={() => handleClickOpen(0, "bottom-add")}>+</button >
 
                         </div>
 
-                        
+
 
                     </div>
                     {/* {props.name.length < 3 ? <Button variant="outlined" className="btn-addline" onClick={() => props.setName([...props.name, []])}>add line</Button> : ""} */}

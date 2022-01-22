@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import * as constants from "./constants";
 import Showpuzzle from './components/Showpuzzle';
-import GallerySelectAnimal from './components/GallerySelectAnimal'
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
 import LetterColor from './components/LetterColor';
 import GalleryImageBottom from './components/GalleryImageBottom';
 import InputName from './components/InPutName';
 import AboutItemAndPolicy from './components/AboutItemAndPolicy';
 import ArtToCart from './components/ArtToCart';
+
+
+
+
 export default function App() {
   const [name, setName] = useState([[], [], []]);
   const [animal, setAnimal] = useState([[], [null, null], [null, null], [null, null], []]); // tren - 1-2 -3-duoi
@@ -25,13 +26,15 @@ export default function App() {
     setExpanded(newExpanded ? panel : false);
   };
 
+
+  let noneData = true;
+  if ((JSON.stringify(name) !== JSON.stringify([[], [], []])) || (JSON.stringify(animal) !== JSON.stringify([[], [null, null], [null, null], [null, null], []]))) noneData = false
   let deleteLine = (key) => {
     let namedefault = [...name];
-    console.log(key);
-
-    namedefault[key]=[];
+    namedefault[key] = [];
     setName(namedefault)
   }
+
   let showAnimal = (nameAnimal, selectAnimal) => {
 
     let animalNew = [...animal];
@@ -56,7 +59,15 @@ export default function App() {
           <div className="col-9">
             <div className="row">
               <div className="col-12 showpuzzle">
-                <Showpuzzle name={name} colorName={colorName} animal={animal} />
+                {(noneData === true) ?
+                  <div className="clickstart">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Click to get start !
+                  </div>
+                  : <Showpuzzle name={name} colorName={colorName} animal={animal} noneData={noneData} />}
               </div>
               <div className="col-12 mt-4">
                 <div className="row">
@@ -78,7 +89,7 @@ export default function App() {
             </div>
           </div>
           <div className="col-3">
-            <div className="row">
+            <div className="row input-all" setx="input-all">
               <div className="col-12">
                 <ArtToCart animal={animal} name={name} />
               </div>
@@ -91,8 +102,7 @@ export default function App() {
                     {/* Text & figures */}
                     <InputName name={name} animal={animal} showAnimal={(nameAnimal, selectAnimal) => showAnimal(nameAnimal, selectAnimal)} deleteLine={(key) => deleteLine(key)} setName={(param) => setName(param)} />
 
-
-
+                   
                     {/* Colors */}
                     <LetterColor colorName={colorName} changeActiveColorName={(colorName) => setColorName(colorName)} />
 
@@ -105,7 +115,6 @@ export default function App() {
           </div>
         </div>
       </div>
-
 
     </div>
   );

@@ -29,4 +29,33 @@ export const ListColor = ["Rainbow", "PastelGirl", "PurplePink"]
 export const Rainbow = ["#d41e2b", "#fc6141", "#ffc445", "#0dd28b", "#0384de", "#2134a6"];
 export const PastelGirl = ["#fbd4e0", "#ffb5b2", "#fbfbfb", "#ffcebd"];
 export const PurplePink = ["#a398cd", "#fbfbfb", "#fbd4e0", "#ffcebd"];
-export const ListAnimal = ["bear", "cat", "chick", "cow", "deer", "diplodocus", "dog", "elephant", "elk", "fox", "frog", "giraffe", "hippo", "horse", "koala", "lion", "monkey", "panda", "parasaurollophus", "pig", "plesiosaurus", "pterodactyl", "rabbit", "raccoon", "sheep", "stehosaurus", "tiger", "triceratops", "tyrannosaurus", "velociraptor", "wolf", "z1", "z2", "z3", "z4", "z5", "z6", "z7", "z8", "z9", "z10", "z11", "z12", "z13", "z14", "z15", "z16", "z17", "z18", "z19", "z20", "z21", "z22", "z23", "z24", "z25", "z26", "z27", "z28", "z30", "z31", "z32", "z33", "z34", "z35", "z36", "z37", "z39", "z40", "zebra"]
+export const ListAnimal = ["bear", "cat", "chick", "cow", "deer", "diplodocus", "dog", "elephant", "elk", "fox", "frog", "giraffe", "hippo", "horse", "koala", "lion", "monkey", "panda", "parasaurollophus", "pig", "plesiosaurus", "pterodactyl", "rabbit", "raccoon", "sheep", "stehosaurus", "tiger", "triceratops", "tyrannosaurus", "velociraptor", "wolf", "z1", "z2", "z3", "z4", "z5", "z6", "z7", "z8", "z9", "z10", "z11", "z12", "z13", "z14", "z15", "z16", "z17", "z18", "z19", "z20", "z21", "z22", "z23", "z24", "z25", "z26", "z27", "z28", "z30", "z31", "z32", "z33", "z34", "z35", "z36", "z37", "z39", "z40", "zebra"];
+
+export const PegPositon = {
+    a: { left: 51, top: 68 },
+    b: { left: 46, top: 50 },
+    c: { left: 15, top: 50 },
+    d: { left: 13, top: 50 },
+    e: { left: 19, top: 50 },
+    f: { left: 21, top: 53 },
+    g: { left: 76, top: 53 },
+    h: { left: 50, top: 50 },
+    i: { left: 50, top: 50 },
+    j: { left: 72, top: 50 },
+    k: { left: 33, top: 50 },
+    l: { left: 19, top: 50 },
+    m: { left: 50, top: 52 },
+    n: { left: 50, top: 50 },
+    o: { left: 50, top: 89 },
+    p: { left: 50, top: 55 },
+    q: { left: 50, top: 89 },
+    r: { left: 38, top: 54 },
+    s: { left: 50, top: 50 },
+    t: { left: 50, top: 50 },
+    u: { left: 50, top: 89 },
+    v: { left: 50, top: 78 },
+    w: { left: 50, top: 22 },
+    x: { left: 50, top: 50 },
+    y: { left: 50, top: 50 },
+    z: { left: 50, top: 50 }
+}

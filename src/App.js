@@ -29,11 +29,21 @@ export default function App() {
 
   let noneData = true;
   if ((JSON.stringify(name) !== JSON.stringify([[], [], []])) || (JSON.stringify(animal) !== JSON.stringify([[], [null, null], [null, null], [null, null], []]))) noneData = false
+
   let deleteLine = (key) => {
-    let namedefault = [...name];
-    namedefault[key] = [];
-    setName(namedefault)
+    if (0 <= key && key < 3) {
+
+      let namedefault = [...name];
+      namedefault[key] = [];
+      setName(namedefault);
+    }
+
+    let defaultArrAnimal = [[], [null, null], [null, null], [null, null], []];
+    let arrAnimal = [...animal];
+    arrAnimal[key + 1] = defaultArrAnimal[key + 1];
+    setAnimal(arrAnimal)
   }
+
 
   let showAnimal = (nameAnimal, selectAnimal) => {
 
@@ -47,7 +57,6 @@ export default function App() {
 
     setAnimal(animalNew)
   }
-  console.log(noneData);
   return (
     <div>
 
@@ -57,36 +66,8 @@ export default function App() {
       <div className="container-fluid">
         <div className="row">
           <div className="col-9">
-            <div className="row">
-              <div className="col-12 showpuzzle">
-                {(noneData === true) ?
-                  <div className="clickstart">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    Click to get start !
-                  </div>
-                  : <Showpuzzle peg={peg} name={name} colorName={colorName} animal={animal} noneData={noneData} />}
-              </div>
-              <div className="col-12 mt-4">
-                <div className="row">
-                  <div className="col-6 flex-gallery">
-                    <p className="title-img-gallery">
-                      Watch the Gallery
-                    </p>
-                    <GalleryImageBottom />
-                  </div>
-                  <div className="col-6 flex-wearehere">
-                    <p className="we-are-here">
-                      We are here
-                    </p>
-                    <img className='img-w' src="https://res.cloudinary.com/hieudz/image/upload/v1642589261/puzzle-name/Screenshot_57.png" alt="" />
-                  </div>
+            <Showpuzzle peg={peg} name={name} colorName={colorName} animal={animal} noneData={noneData} />
 
-                </div>
-              </div>
-            </div>
           </div>
           <div className="col-3">
             <div className="row input-all" setx="input-all">

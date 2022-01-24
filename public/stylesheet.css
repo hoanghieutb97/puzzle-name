@@ -3,16 +3,34 @@
     padding: 0;
 }
 
+.name-color {
+    width: 100%;
+    word-break: break-word;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.cadr-one-color {
+    width: 33%;
+}
+
+.line-input {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* padding-left: 23px; */
+}
+
 p.title-add-peg {
     font-family: cursive;
     font-weight: 400;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
 }
 
 .ctn-add-peg {
     display: flex;
     margin-top: 2rem;
-    padding: 0 45px;
+    padding: 0 1rem;
     justify-content: space-between;
 }
 
@@ -60,7 +78,7 @@ span.price-sale {
     align-items: self-end;
 }
 
-p.p-name-animal {position: absolute;text-transform: capitalize;font-weight: 500;bottom: -16px;margin: 0;}
+p.p-name-animal {position: absolute;text-transform: capitalize;font-weight: 500;bottom: -1vw;font-size: 1.1vw;margin: 0;}
 
 .ctn-show-animal {
     position: relative;
@@ -83,6 +101,7 @@ img.img-add-animal-top {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    width: 91%;
 }
 
 img.img-add-animal {
@@ -93,9 +112,9 @@ img.img-add-animal {
 }
 
 img.img-show-animal {
-    max-height: 110px;
-    max-width: 110px;
-    margin: 6px;
+    max-height: 6vw;
+    max-width: 6vw;
+    margin: 1vw;
     filter: drop-shadow(1px 1px 1px #000 );
 }
 
@@ -140,6 +159,7 @@ img.img-animal {
     align-items: center;
     display: flex;
     justify-content: center;
+    width: 91%;
 }
 
 .fa.fa-home {
@@ -230,12 +250,16 @@ p.input-text {
 }
 
 svg.trash-line {
-    top: 50%;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    right: 24px;
-    z-index: 9;
+    /* margin: 0 1rem; */
     cursor: pointer;
+    width: 20px;
+    height: 20px;
+    fill: #bcbcbc;
+    /* cursor: pointer; */
+}
+
+svg.trash-line:hover {
+    fill: #4e4e4e;
 }
 
 .icon-fill:hover::before {
@@ -311,16 +335,17 @@ svg.active-color {
 
 .ctn-avtivecolor {
     position: relative;
+    padding: 0 3%;
 }
 
 .all-color {
     display: flex;
     justify-content: space-around;
-    /* width: 100% !important; */
+    width: 100% !important;
 }
 
 .one-hex {
-    width: 16px;
+    width: 16.666666% !important;
     height: 71px;
 }
 
@@ -330,6 +355,7 @@ svg.active-color {
     overflow: hidden;
     cursor: pointer;
     border: 1px solid #bbb;
+    width: 100%;
 }
 
 .ctn-all-line {
@@ -345,17 +371,17 @@ svg.active-color {
     display: inline-flex;
     align-items: center;
     flex-direction: column;
-    padding: 20px;
+    padding: 1vw;
     background: url(https://res.cloudinary.com/hieudz/image/upload/v1642499459/puzzle-name/background-puzzle.jpg);
-    border-radius: 29px;
+    border-radius: 2vw;
     background-size: cover;
-    max-width: 1000px;
+    width: 100%;
 }
 
 .one-line {
     display: flex;
     align-items: end;
-    margin: 10px;
+    margin: 0.3vw;
 }
 
 .oneline-hide {
@@ -375,9 +401,9 @@ svg#Layer_1 {
 }
 
 .onbe-letter {
-    height: 100px !important;
+    height: 6vw;
     display: inline-block;
-    margin: 6px;
+    margin: 0.3vw;
     position: relative;
 }
 
@@ -401,7 +427,7 @@ svg#Layer_1 {
     padding: 3PX 11PX;
     z-index: 1;
     width: 100%;
-    FONT-SIZE: 1.2REM;
+    FONT-SIZE: 1REM;
     text-transform: uppercase;
     letter-spacing: 1px;
     font-family: cursive;

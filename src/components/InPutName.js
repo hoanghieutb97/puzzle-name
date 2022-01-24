@@ -93,7 +93,7 @@ function InputName(props) {
         setOpen(false);
     }
     let animal = [...props.animal];
-
+    // console.log(props.name);
     return (
         <React.Fragment>
             <Accordion expanded={expanded === 'panel1'} aria-controls="panel1a-content" id="panel1a-header" onChange={handleChange('panel1')}>
@@ -111,39 +111,47 @@ function InputName(props) {
                 </AccordionSummary>
                 <AccordionDetails>
                     <div>
-                        <div className="ctn-add-animal-top">
-                            {animal[0].map((item, key) => <img className="img-add-animal-top" key={key} onClick={() => handleClickOpen(key, "top")} src={`https://res.cloudinary.com/hieudz/image/upload/v1642654904/puzzle-name/animal/${animal[0][key]}.png`} alt="" />)}
-                            <img onClick={() => handleClickOpen(0, "top-add")} src="https://res.cloudinary.com/hieudz/image/upload/v1642827053/puzzle-name/btn-add.png" alt="add animal" className="add-animal" />
-
-
+                        <div className="line-input">
+                            <div className="ctn-add-animal-top">
+                                {animal[0].map((item, key) => <img className="img-add-animal-top" key={key} onClick={() => handleClickOpen(key, "top")} src={`https://res.cloudinary.com/hieudz/image/upload/v1642654904/puzzle-name/animal/${animal[0][key]}.png`} alt="" />)}
+                                <img onClick={() => handleClickOpen(0, "top-add")} src="https://res.cloudinary.com/hieudz/image/upload/v1642827053/puzzle-name/btn-add.png" alt="add animal" className="add-animal" />
+                            </div>
+                            <svg onClick={() => props.deleteLine(-1)} data-v-3af7fc61="" width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg" className="trash-line">
+                                <path data-v-3af7fc61="" d="M14 1H10.5L9.5 0H4.5L3.5 1H0V3H14V1ZM1 4V16C1 17.1 1.9 18 3 18H11C12.1 18 13 17.1 13 16V4H1Z" ></path>
+                            </svg>
                         </div>
 
-                        {props.name.map((item, key) => <div className="ctn-one-line-input" key={key} >
+                        {props.name.map((item, key) => <div className="line-input" key={key}>
+                            <div className="ctn-one-line-input" >
+                                {(animal[key + 1][0] === null) ? <img onClick={() => handleClickOpen(key, "left")} src="https://res.cloudinary.com/hieudz/image/upload/v1642827053/puzzle-name/btn-add.png" alt="add animal" className="add-animal" />
+                                    : <img className="img-add-animal" onClick={() => handleClickOpen(key, "left")} src={`https://res.cloudinary.com/hieudz/image/upload/v1642654904/puzzle-name/animal/${animal[key + 1][0]}.png`} alt="" />}
 
-                            {(animal[key + 1][0] === null) ? <img onClick={() => handleClickOpen(key, "left")} src="https://res.cloudinary.com/hieudz/image/upload/v1642827053/puzzle-name/btn-add.png" alt="add animal" className="add-animal" />
-                                : <img className="img-add-animal" onClick={() => handleClickOpen(key, "left")} src={`https://res.cloudinary.com/hieudz/image/upload/v1642654904/puzzle-name/animal/${animal[key + 1][0]}.png`} alt="" />}
-
-                            <p className='input-text'>
-                                <span className="input">
-                                    <input type="text" placeholder="Name Here ..." onChange={(e) => changeLineName(e.target.value, key)} value={props.name[key].join("")} />
-                                    <span>
+                                <p className='input-text'>
+                                    <span className="input">
+                                        <input  type="text" placeholder="Name Here ..." onChange={(e) => changeLineName(e.target.value, key)} value={props.name[key].join("")} />
+                                        <span>
+                                        </span>
                                     </span>
-                                </span>
-                                <svg onClick={() => props.deleteLine(key)} data-v-3af7fc61="" width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg" className="trash-line">
-                                    <path data-v-3af7fc61="" d="M14 1H10.5L9.5 0H4.5L3.5 1H0V3H14V1ZM1 4V16C1 17.1 1.9 18 3 18H11C12.1 18 13 17.1 13 16V4H1Z" fill="#BCBCBC"></path>
-                                </svg>
-                            </p>
 
-                            {(animal[key + 1][1] === null) ? <img onClick={() => handleClickOpen(key, "right")} src="https://res.cloudinary.com/hieudz/image/upload/v1642827053/puzzle-name/btn-add.png" alt="add animal" className="add-animal" />
-                                : <img className="img-add-animal" onClick={() => handleClickOpen(key, "right")} src={`https://res.cloudinary.com/hieudz/image/upload/v1642654904/puzzle-name/animal/${animal[key + 1][1]}.png`} alt="" />}
+                                </p>
 
+                                {(animal[key + 1][1] === null) ? <img onClick={() => handleClickOpen(key, "right")} src="https://res.cloudinary.com/hieudz/image/upload/v1642827053/puzzle-name/btn-add.png" alt="add animal" className="add-animal" />
+                                    : <img className="img-add-animal" onClick={() => handleClickOpen(key, "right")} src={`https://res.cloudinary.com/hieudz/image/upload/v1642654904/puzzle-name/animal/${animal[key + 1][1]}.png`} alt="" />}
+                            </div>
+
+                            <svg onClick={() => props.deleteLine(key)} data-v-3af7fc61="" width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg" className="trash-line">
+                                <path data-v-3af7fc61="" d="M14 1H10.5L9.5 0H4.5L3.5 1H0V3H14V1ZM1 4V16C1 17.1 1.9 18 3 18H11C12.1 18 13 17.1 13 16V4H1Z" ></path>
+                            </svg>
                         </div>)
                         }
-                        <div className="ctn-add-animal-top">
-                            {animal[4].map((item, key) => <img className="img-add-animal-top" key={key} onClick={() => handleClickOpen(key, "bottom")} src={`https://res.cloudinary.com/hieudz/image/upload/v1642654904/puzzle-name/animal/${animal[4][key]}.png`} alt="" />)}
-                            <img onClick={() => handleClickOpen(0, "bottom-add")} src="https://res.cloudinary.com/hieudz/image/upload/v1642827053/puzzle-name/btn-add.png" alt="add animal" className="add-animal" />
-
-
+                        <div className="line-input">
+                            <div className="ctn-add-animal-top">
+                                {animal[4].map((item, key) => <img className="img-add-animal-top" key={key} onClick={() => handleClickOpen(key, "bottom")} src={`https://res.cloudinary.com/hieudz/image/upload/v1642654904/puzzle-name/animal/${animal[4][key]}.png`} alt="" />)}
+                                <img onClick={() => handleClickOpen(0, "bottom-add")} src="https://res.cloudinary.com/hieudz/image/upload/v1642827053/puzzle-name/btn-add.png" alt="add animal" className="add-animal" />
+                            </div>
+                            <svg onClick={() => props.deleteLine(3)} data-v-3af7fc61="" width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg" className="trash-line">
+                                <path data-v-3af7fc61="" d="M14 1H10.5L9.5 0H4.5L3.5 1H0V3H14V1ZM1 4V16C1 17.1 1.9 18 3 18H11C12.1 18 13 17.1 13 16V4H1Z" ></path>
+                            </svg>
                         </div>
 
 
@@ -191,7 +199,7 @@ function InputName(props) {
                 </DialogActions> */}
             </BootstrapDialog>
 
-        </React.Fragment>
+        </React.Fragment >
     );
 }
 

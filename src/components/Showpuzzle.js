@@ -10,6 +10,7 @@ const Showpuzzle = (props) => {
       let PegPositon = constants.PegPositon;
 
       let textAllLine = "";
+      
       if (!props.noneData) textAllLine = name.map((item, key) => <div className={"one-line" + ((item.length === 0) ? " oneline-hide" : "")} key={key}>
             {/* animal trai */}
             {(animal[key + 1][0] !== null) ? <div className="ctn-show-animal">
@@ -20,7 +21,7 @@ const Showpuzzle = (props) => {
 
             {item.map((itemChil, keyChill) => <div className="onbe-letter" key={keyChill}>
                   {constants[itemChil](ColorToArray.keyToColorHex(constants[colorName], keyChill))}
-                  <img src="https://res.cloudinary.com/hieudz/image/upload/v1642838516/puzzle-name/peg.png" alt="peg" className="peg" style={{ top: PegPositon[itemChil].top+"%", left: PegPositon[itemChil].left+"%" }} />
+                  {props.peg === true ? <img src="https://res.cloudinary.com/hieudz/image/upload/v1642838516/puzzle-name/peg.png" alt="peg" className="peg" style={{ top: PegPositon[itemChil].top + "%", left: PegPositon[itemChil].left + "%" }} /> : ""}
             </div>
             )}
 

@@ -134,7 +134,7 @@ function InputName(props) {
                                 </svg>
                             </p>
 
-                            {(animal[key + 1][1] === null) ? <img onClick={() => handleClickOpen(key, "left")} src="https://res.cloudinary.com/hieudz/image/upload/v1642827053/puzzle-name/btn-add.png" alt="add animal" className="add-animal" />
+                            {(animal[key + 1][1] === null) ? <img onClick={() => handleClickOpen(key, "right")} src="https://res.cloudinary.com/hieudz/image/upload/v1642827053/puzzle-name/btn-add.png" alt="add animal" className="add-animal" />
                                 : <img className="img-add-animal" onClick={() => handleClickOpen(key, "right")} src={`https://res.cloudinary.com/hieudz/image/upload/v1642654904/puzzle-name/animal/${animal[key + 1][1]}.png`} alt="" />}
 
                         </div>)
@@ -150,7 +150,13 @@ function InputName(props) {
 
                     </div>
                     {/* {props.name.length < 3 ? <Button variant="outlined" className="btn-addline" onClick={() => props.setName([...props.name, []])}>add line</Button> : ""} */}
-
+                    <div className="ctn-add-peg">
+                        <p className="title-add-peg">Add peg</p>
+                        <label className="switch">
+                            <input type="checkbox" onChange={props.setPeg} />
+                            <span className="slider round"></span>
+                        </label>
+                    </div>
 
                 </AccordionDetails>
             </Accordion>

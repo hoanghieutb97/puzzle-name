@@ -19,7 +19,7 @@ export default function App() {
   const [name, setName] = useState([[], [], []]);
   const [animal, setAnimal] = useState([[], [null, null], [null, null], [null, null], []]); // tren - 1-2 -3-duoi
   const [colorName, setColorName] = useState(constants.ListColor[0]);
-
+  const [peg, setPeg] = useState(false);
   const [price, setPrice] = useState(0);
   const [expanded, setExpanded] = React.useState('panel1');
   const handleChange = (panel) => (event, newExpanded) => {
@@ -47,7 +47,7 @@ export default function App() {
 
     setAnimal(animalNew)
   }
-  // console.log(name);
+  console.log(noneData);
   return (
     <div>
 
@@ -67,7 +67,7 @@ export default function App() {
                     <span></span>
                     Click to get start !
                   </div>
-                  : <Showpuzzle name={name} colorName={colorName} animal={animal} noneData={noneData} />}
+                  : <Showpuzzle peg={peg} name={name} colorName={colorName} animal={animal} noneData={noneData} />}
               </div>
               <div className="col-12 mt-4">
                 <div className="row">
@@ -100,9 +100,9 @@ export default function App() {
                   </AccordionSummary>
                   <AccordionDetails>
                     {/* Text & figures */}
-                    <InputName name={name} animal={animal} showAnimal={(nameAnimal, selectAnimal) => showAnimal(nameAnimal, selectAnimal)} deleteLine={(key) => deleteLine(key)} setName={(param) => setName(param)} />
+                    <InputName setPeg={() => setPeg(!peg)} name={name} animal={animal} showAnimal={(nameAnimal, selectAnimal) => showAnimal(nameAnimal, selectAnimal)} deleteLine={(key) => deleteLine(key)} setName={(param) => setName(param)} />
 
-                   
+
                     {/* Colors */}
                     <LetterColor colorName={colorName} changeActiveColorName={(colorName) => setColorName(colorName)} />
 

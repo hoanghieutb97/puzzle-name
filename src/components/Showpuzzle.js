@@ -8,6 +8,7 @@ const Showpuzzle = (props) => {
       let colorName = props.colorName;
       let animal = props.animal;
       let noneData = true;
+      let heightLetter = props.heightLetter;
       if ((JSON.stringify(name) !== JSON.stringify([[], [], []])) || (JSON.stringify(animal) !== JSON.stringify([[], [null, null], [null, null], [null, null], []]))) noneData = false
 
       let PegPositon = constants.PegPositon;
@@ -15,13 +16,13 @@ const Showpuzzle = (props) => {
       let textAllLine = "";
       if (!props.noneData) textAllLine = name.map((item, key) => <div className={"one-line" + (((item.length === 0) && (JSON.stringify(animal[key + 1]) === JSON.stringify([null, null]))) ? " oneline-hide" : "")} key={key}>
             {/* animal trai */}
-            {(animal[key + 1][0] !== null) ? <div className="ctn-show-animal">
+            {(animal[key + 1][0] !== null) ? <div className="ctn-show-animal" style={{ "max-height": heightLetter, "min-height": heightLetter }}>
                   <img src={`https://res.cloudinary.com/hieudz/image/upload/v1642654904/puzzle-name/animal/${animal[key + 1][0]}.png`} alt="" className="img-show-animal" />
                   <p className="p-name-animal">{animal[key + 1][0]}</p>
             </div> : ""}
             {/* het animal trai */}
 
-            {item.map((itemChil, keyChill) => <div className="onbe-letter" key={keyChill}>
+            {item.map((itemChil, keyChill) => <div className="onbe-letter" key={keyChill} style={{ height: heightLetter }}>
                   {constants[itemChil](ColorToArray.keyToColorHex(constants[colorName], keyChill))}
                   {props.peg === true ? <img src="https://res.cloudinary.com/hieudz/image/upload/v1642838516/puzzle-name/peg.png" alt="peg" className="peg" style={{ top: PegPositon[itemChil].top + "%", left: PegPositon[itemChil].left + "%" }} /> : ""}
             </div>
@@ -38,7 +39,7 @@ const Showpuzzle = (props) => {
       </div >)
 
 
-      console.log(window.innerWidth);
+      // console.log(window.innerWidth);
 
       return (
             <div className="row" >

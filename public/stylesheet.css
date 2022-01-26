@@ -18,7 +18,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /* padding-left: 23px; */
 }
 
 p.title-add-peg {
@@ -78,16 +77,17 @@ span.price-sale {
     align-items: self-end;
 }
 
-p.p-name-animal {position: absolute;text-transform: capitalize;font-weight: 500;bottom: -1vw;font-size: 1.1vw;margin: 0;}
+p.p-name-animal {position: absolute;text-transform: capitalize;font-weight: 500;bottom: -1.4vw;font-size: 1.1vw;margin: 0;}
 
 .ctn-show-animal {
     position: relative;
+    margin: 0.5rem;
 }
 
 img.item-animal-show {
     max-height: 110px;
     max-width: 110px;
-    margin: 10px;
+    /* margin: 10px; */
     filter: drop-shadow(1px 1px 1px #000 );
 }
 
@@ -112,9 +112,9 @@ img.img-add-animal {
 }
 
 img.img-show-animal {
-    max-height: 6vw;
-    max-width: 6vw;
-    margin: 1vw;
+    /* max-height: 6vw; */
+    /* max-width: 6vw; */
+    /* margin: 1vw; */
     filter: drop-shadow(1px 1px 1px #000 );
 }
 
@@ -145,14 +145,9 @@ img.img-animal {
 .add-animal {
     width: 35px !important;
     height: 35px !important;
-    /* margin: 10px; */
-    /* background: #fff0; */
     border: 1px solid #17d5d2;
     border-radius: 1000px;
-    /* display: flex; */
-    /* align-items: center; */
     cursor: pointer;
-    /* justify-content: center; */
 }
 
 .ctn-one-line-input {
@@ -194,8 +189,6 @@ img.fa.fa-home {
     height: 80px;
     line-height: 80px;
     vertical-align: middle;
-    /* left: 10px; */
-    /* top: 9px; */
     border-radius: 50%;
     font-size: 40px;
     background-image: -webkit-linear-gradient(#e8e8e8 0%, #d6d6d6 100%);
@@ -224,9 +217,6 @@ img.fa.fa-home {
     align-items: center;
 }
 
-img.img-w {
-    /* margin: auto; */
-}
 
 p.title-img-gallery {
     font-weight: 500;
@@ -250,12 +240,12 @@ p.input-text {
 }
 
 svg.trash-line {
-    /* margin: 0 1rem; */
+   
     cursor: pointer;
     width: 20px;
     height: 20px;
     fill: #bcbcbc;
-    /* cursor: pointer; */
+  
 }
 
 svg.trash-line:hover {
@@ -300,7 +290,7 @@ svg.trash-line:hover {
     transition-duration: 0.5s;
     box-shadow: inset 0 0 0 1px #16a085;
 };
-}
+
 
 .icon {
     cursor: pointer;
@@ -388,14 +378,9 @@ svg.active-color {
     display: none;
 }
 
-.oneline-mt-1 {
-    /* margin: 12px; */
-}
-
 svg#Layer_1 {
     height: 100%;
-    /* stroke: #8f8072; */
-    /* stroke-width: 4px; */
+
     overflow: visible;
     filter: drop-shadow(1px 1px 1px #000 );
 }
@@ -449,9 +434,7 @@ svg#Layer_1 {
     display: inline-block;
     top: 50%;
     left: 50%;
-    /* color: #03e9f4; */
     text-decoration: none;
-    /* text-transform: uppercase; */
     transform: translate(-50%, -50%);
     transition: 0.5s;
     letter-spacing: 4px;

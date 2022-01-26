@@ -9,6 +9,7 @@ const Showpuzzle = (props) => {
       let animal = props.animal;
       let noneData = true;
       let heightLetter = props.heightLetter;
+      let styleAnimal = { "max-width": heightLetter, "max-height": heightLetter }
       if ((JSON.stringify(name) !== JSON.stringify([[], [], []])) || (JSON.stringify(animal) !== JSON.stringify([[], [null, null], [null, null], [null, null], []]))) noneData = false
 
       let PegPositon = constants.PegPositon;
@@ -16,8 +17,8 @@ const Showpuzzle = (props) => {
       let textAllLine = "";
       if (!props.noneData) textAllLine = name.map((item, key) => <div className={"one-line" + (((item.length === 0) && (JSON.stringify(animal[key + 1]) === JSON.stringify([null, null]))) ? " oneline-hide" : "")} key={key}>
             {/* animal trai */}
-            {(animal[key + 1][0] !== null) ? <div className="ctn-show-animal" style={{ "max-height": heightLetter, "min-height": heightLetter }}>
-                  <img src={`https://res.cloudinary.com/hieudz/image/upload/v1642654904/puzzle-name/animal/${animal[key + 1][0]}.png`} alt="" className="img-show-animal" />
+            {(animal[key + 1][0] !== null) ? <div className="ctn-show-animal" style={styleAnimal}>
+                  <img style={styleAnimal} src={`https://res.cloudinary.com/hieudz/image/upload/v1642654904/puzzle-name/animal/${animal[key + 1][0]}.png`} alt="" className="img-show-animal" />
                   <p className="p-name-animal">{animal[key + 1][0]}</p>
             </div> : ""}
             {/* het animal trai */}
@@ -31,8 +32,8 @@ const Showpuzzle = (props) => {
 
 
             {/* animal phai */}
-            {(animal[key + 1][1] !== null) ? <div className="ctn-show-animal">
-                  <img src={`https://res.cloudinary.com/hieudz/image/upload/v1642654904/puzzle-name/animal/${animal[key + 1][1]}.png`} alt="" className="img-show-animal" />
+            {(animal[key + 1][1] !== null) ? <div className="ctn-show-animal" style={styleAnimal} >
+                  <img style={styleAnimal} src={`https://res.cloudinary.com/hieudz/image/upload/v1642654904/puzzle-name/animal/${animal[key + 1][1]}.png`} alt="" className="img-show-animal" />
                   <p className="p-name-animal">{animal[key + 1][1]}</p>
             </div> : ""}
             {/* het animal phai */}
@@ -57,8 +58,8 @@ const Showpuzzle = (props) => {
                                     <div className="all-line">
                                           {(animal[0].length !== 0) ?
                                                 <div className="ctn-animal-show" >
-                                                      {animal[0].map((item, key) => <div key={key} className="ctn-show-animal">
-                                                            <img src={`https://res.cloudinary.com/hieudz/image/upload/v1642654904/puzzle-name/animal/${item}.png`} alt="" className="item-animal-show" />
+                                                      {animal[0].map((item, key) => <div key={key} className="ctn-show-animal" style={styleAnimal} >
+                                                            <img style={styleAnimal} src={`https://res.cloudinary.com/hieudz/image/upload/v1642654904/puzzle-name/animal/${item}.png`} alt="" className="item-animal-show" />
                                                             <p className="p-name-animal">{item}</p>
                                                       </div>)}
                                                 </div> : ""
@@ -67,8 +68,8 @@ const Showpuzzle = (props) => {
 
                                           {(animal[4].length !== 0) ?
                                                 <div className="ctn-animal-show" >
-                                                      {animal[4].map((item, key) => <div key={key} className="ctn-show-animal">
-                                                            <img key={key} src={`https://res.cloudinary.com/hieudz/image/upload/v1642654904/puzzle-name/animal/${item}.png`} alt="" className="item-animal-show" />
+                                                      {animal[4].map((item, key) => <div key={key} className="ctn-show-animal" style={styleAnimal}>
+                                                            <img style={styleAnimal} key={key} src={`https://res.cloudinary.com/hieudz/image/upload/v1642654904/puzzle-name/animal/${item}.png`} alt="" className="item-animal-show" />
                                                             <p className="p-name-animal">{item}</p>
                                                       </div>)}
                                                 </div> : ""
@@ -88,7 +89,7 @@ const Showpuzzle = (props) => {
                                     <p className="we-are-here">
                                           We are here
                                     </p>
-                                    <img className='img-w' src="https://res.cloudinary.com/hieudz/image/upload/v1642589261/puzzle-name/Screenshot_57.png" alt="" />
+                                    {/* <img className='img-w' src="https://res.cloudinary.com/hieudz/image/upload/v1642589261/puzzle-name/Screenshot_57.png" alt="" /> */}
                               </div>
 
                         </div>

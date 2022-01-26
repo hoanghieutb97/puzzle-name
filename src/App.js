@@ -86,11 +86,11 @@ export default function App() {
       </div>
       <div className="container-fluid">
         <div className="row">
-          <div className="col-9">
+          <div className="col-12 col-lg-9">
             <Showpuzzle peg={peg} name={name} colorName={colorName} animal={animal} heightLetter={tinhHeight(name, animal)} />
 
           </div>
-          <div className="col-3">
+          <div className="col-12 col-lg-3">
             <div className="row input-all" setx="input-all">
               <div className="col-12">
                 <ArtToCart animal={animal} name={name} />

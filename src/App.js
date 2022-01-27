@@ -100,7 +100,7 @@ export default function App() {
 
       <div className="container-fluid mt-4">
       </div>
-      <div className="container-fluid">
+      <div className={"container-fluid"}>
         <div className="row">
           <div className="col-12 col-lg-9 po-sticky ">
             {window.innerWidth < 992 ? <ArtToCart animal={animal} name={name} className="cart-mobile" /> : ""}

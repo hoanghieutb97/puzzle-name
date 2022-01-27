@@ -28,7 +28,7 @@ function ArtToCart(props) {
     let tongTien = tinhTien(name, p_line, p_text, minText1, mintext2, animal, p_animal, minAnimal);
 
     return (
-        <div>
+        <div className={props.className}>
             <p className="title-cart">
                 Montessori Wooden Hieu Puzzle
             </p>
@@ -37,7 +37,7 @@ function ArtToCart(props) {
                     <p className="ctn-price-sale">
                         <span className='price-sale'>
                             ${tongTien}
-                        </span> 
+                        </span>
                         <span className='price-none-sale'>
                             ${tongTien * 2.5}
                         </span>
@@ -48,7 +48,7 @@ function ArtToCart(props) {
                     </p>
                 </div>
                 <Button variant="contained" color="success" className='btn-add-to-cart'>Add To Cart </Button>
-             
+
             </div>
         </div>
     );

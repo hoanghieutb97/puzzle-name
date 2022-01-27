@@ -10,7 +10,7 @@ import LetterColor from './components/LetterColor';
 import InputName from './components/InPutName';
 import AboutItemAndPolicy from './components/AboutItemAndPolicy';
 import ArtToCart from './components/ArtToCart';
-
+import GalleryImageBottom from "./components/GalleryImageBottom"
 
 
 
@@ -24,16 +24,23 @@ export default function App() {
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
+  const [heightLetter, setHeightLetter] = useState(0);
 
-  let tinhHeight = (name, animal) => {
-    let WindowWidth = window.innerWidth;
+
+
+  let arrRow = animal.map(item => item.filter(item2 => item2 !== null));
+  arrRow = [arrRow[0], [...arrRow[1], ...name[0]], [...arrRow[2], ...name[1]], [...arrRow[3], ...name[2]], arrRow[4]];
+  useEffect(() => {
+    let WindowWidth = 0;
+    if (window.innerWidth >= 992) WindowWidth = window.innerWidth * 0.75;
+    else WindowWidth = window.innerWidth;
     let widthRow = (texLine, animalLine) => {
       let sum = 0;
       texLine.forEach(element => {
         sum = sum + constants.PegPositon[element].wph + 0.091;
       });
       animalLine.forEach(element => {
-        sum = sum + 1 + 0.091;
+        sum = sum + 1 + 0.1;
       });
       return sum + 0.5;
     }
@@ -44,12 +51,21 @@ export default function App() {
       , widthRow([], animal[4])];
     let heightLetter = 0;
     let maxAllW = (Math.max(...allW)).toFixed(4);
-    if (((WindowWidth * 0.75) / maxAllW) > 230) heightLetter = 229
-    else heightLetter = (WindowWidth * 0.75) / maxAllW
+    if ((WindowWidth / maxAllW) > 230) heightLetter = 229
+    else heightLetter = WindowWidth / maxAllW
 
-    return heightLetter
-  }
-  // console.log(tinhHeight(name, animal));
+    let arrRow = animal.map(item => item.filter(item2 => item2 !== null));
+    arrRow = [arrRow[0], [...arrRow[1], ...name[0]], [...arrRow[2], ...name[1]], [...arrRow[3], ...name[2]], arrRow[4]];
+    arrRow = arrRow.filter(item => item.length !== 0);
+
+    let WindowHeight = WindowWidth * 0.6;
+    let heightLetter2 = (WindowHeight) / (arrRow.length + (arrRow.length + 1) * 0.2);
+    if (heightLetter > heightLetter2) setHeightLetter(heightLetter2);
+    else setHeightLetter(heightLetter);
+
+  }, [name, animal]);
+
+
 
   let deleteLine = (key) => {
     if (0 <= key && key < 3) {
@@ -86,14 +102,17 @@ export default function App() {
       </div>
       <div className="container-fluid">
         <div className="row">
-          <div className="col-12 col-lg-9">
-            <Showpuzzle peg={peg} name={name} colorName={colorName} animal={animal} heightLetter={tinhHeight(name, animal)} />
+          <div className="col-12 col-lg-9 po-sticky ">
+            {window.innerWidth < 992 ? <ArtToCart animal={animal} name={name} className="cart-mobile" /> : ""}
+
+            <Showpuzzle peg={peg} name={name} colorName={colorName} animal={animal} heightLetter={heightLetter} />
 
           </div>
           <div className="col-12 col-lg-3">
             <div className="row input-all" setx="input-all">
               <div className="col-12">
-                <ArtToCart animal={animal} name={name} />
+                {window.innerWidth >= 992 ? <ArtToCart animal={animal} name={name} /> : ""}
+
               </div>
               <div className="col-12">
                 <Accordion className="back-custom" expanded={expanded === 'panel1'} aria-controls="panel1a-content" id="panel1a-header" onChange={handleChange('panel1')}>
@@ -113,6 +132,8 @@ export default function App() {
                   </AccordionDetails >
                 </Accordion >
               </div>
+              {window.innerWidth < 992 ? <GalleryImageBottom /> : ""}
+
             </div>
           </div>
         </div>

@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import * as constants from "./../constants";
 import GalleryImageBottom from './GalleryImageBottom';
 import * as ColorToArray from "./ColorToArray";
 
 const Showpuzzle = (props) => {
+      let heightLetter = props.heightLetter;
       let name = props.name;
       let colorName = props.colorName;
       let animal = props.animal;
       let noneData = true;
-      let heightLetter = props.heightLetter;
-      let styleAnimal = { "max-width": heightLetter, "max-height": heightLetter }
+
+      let WindowWidth = 0;
+      if (window.innerWidth >= 992) WindowWidth = window.innerWidth * 0.75;
+      else WindowWidth = window.innerWidth;
+
+
+      let styleAnimal = { "maxWidth": heightLetter, "maxHeight": heightLetter }
       if ((JSON.stringify(name) !== JSON.stringify([[], [], []])) || (JSON.stringify(animal) !== JSON.stringify([[], [null, null], [null, null], [null, null], []]))) noneData = false
 
       let PegPositon = constants.PegPositon;
@@ -23,9 +29,9 @@ const Showpuzzle = (props) => {
             </div> : ""}
             {/* het animal trai */}
 
-            {item.map((itemChil, keyChill) => <div className="onbe-letter" key={keyChill} style={{ height: heightLetter }}>
-                  {constants[itemChil](ColorToArray.keyToColorHex(constants[colorName], keyChill))}
-                  {props.peg === true ? <img src="https://res.cloudinary.com/hieudz/image/upload/v1642838516/puzzle-name/peg.png" alt="peg" className="peg" style={{ top: PegPositon[itemChil].top + "%", left: PegPositon[itemChil].left + "%" }} /> : ""}
+            {item.map((itemChil, keyChill) => <div className="onbe-letter" key={keyChill} >
+                  {constants[itemChil](ColorToArray.keyToColorHex(constants[colorName], keyChill), heightLetter)}
+                  {props.peg === true ? <img src="https://res.cloudinary.com/hieudz/image/upload/v1642838516/puzzle-name/peg.png" alt="peg" className="peg" style={{ top: PegPositon[itemChil].top + "%", left: PegPositon[itemChil].left + "%", width: heightLetter * 0.2 + "px" }} /> : ""}
             </div>
             )}
 
@@ -40,11 +46,11 @@ const Showpuzzle = (props) => {
       </div >)
 
 
-      // console.log(window.innerWidth);
+      console.log(heightLetter);
 
       return (
             <div className="row" >
-                  <div className="col-12 showpuzzle">
+                  <div className={"col-12 " + ((window.innerWidth >= 992) ? " showpuzzle" : " showpuzzle-mobile")} >
                         {(noneData === true) ?
                               <div className="clickstart">
                                     <span></span>
@@ -77,24 +83,10 @@ const Showpuzzle = (props) => {
                                     </div>
                               </div>}
                   </div>
-                  <div className="col-12 mt-4">
-                        <div className="row">
-                              <div className="col-6 flex-gallery">
-                                    <p className="title-img-gallery">
-                                          Watch the Gallery
-                                    </p>
-                                    <GalleryImageBottom />
-                              </div>
-                              <div className="col-6 flex-wearehere">
-                                    <p className="we-are-here">
-                                          We are here
-                                    </p>
-                                    {/* <img className='img-w' src="https://res.cloudinary.com/hieudz/image/upload/v1642589261/puzzle-name/Screenshot_57.png" alt="" /> */}
-                              </div>
 
-                        </div>
-                  </div>
-            </div>
+                  {window.innerWidth >= 992 ? <GalleryImageBottom /> : ""}
+
+            </div >
 
 
 

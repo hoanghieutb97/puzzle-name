@@ -98,7 +98,7 @@ function InputName(props) {
         <React.Fragment>
             <Accordion expanded={expanded === 'panel1'} aria-controls="panel1a-content" id="panel1a-header" onChange={handleChange('panel1')}>
                 <AccordionSummary >
-                    <Typography>
+                    <Typography className='text-config'>
                         Text & figures
                         <br />
                         {(maxLetter === true) ? <span className="max-letter">max letter = {MaxLetter}</span> : ""}
@@ -110,7 +110,7 @@ function InputName(props) {
 
                 </AccordionSummary>
                 <AccordionDetails>
-                    <div>
+                    <div >
                         <div className="line-input">
                             <div className="ctn-add-animal-top">
                                 {animal[0].map((item, key) => <img className="img-add-animal-top" key={key} onClick={() => handleClickOpen(key, "top")} src={`https://res.cloudinary.com/hieudz/image/upload/v1642654904/puzzle-name/animal/${animal[0][key]}.png`} alt="" />)}

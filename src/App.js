@@ -94,16 +94,20 @@ export default function App() {
 
     setAnimal(animalNew)
   }
+
   return (
     <div>
 
 
       <div className="container-fluid mt-4">
       </div>
-      <div className={"container-fluid"}>
+      <div className={"container-fluid" +(window.innerWidth < 992 ?" p-0":"")}>
         <div className="row">
-          <div className="col-12 col-lg-9 po-sticky ">
+          <div className="col-12">
             {window.innerWidth < 992 ? <ArtToCart animal={animal} name={name} className="cart-mobile" /> : ""}
+
+          </div>
+          <div className="col-12 col-lg-9 po-sticky"  >
 
             <Showpuzzle peg={peg} name={name} colorName={colorName} animal={animal} heightLetter={heightLetter} />
 
@@ -121,8 +125,9 @@ export default function App() {
                   </AccordionSummary>
                   <AccordionDetails>
                     {/* Text & figures */}
-                    <InputName setPeg={() => setPeg(!peg)} name={name} animal={animal} showAnimal={(nameAnimal, selectAnimal) => showAnimal(nameAnimal, selectAnimal)} deleteLine={(key) => deleteLine(key)} setName={(param) => setName(param)} />
-
+                    <div>
+                      <InputName setPeg={() => setPeg(!peg)} name={name} animal={animal} showAnimal={(nameAnimal, selectAnimal) => showAnimal(nameAnimal, selectAnimal)} deleteLine={(key) => deleteLine(key)} setName={(param) => setName(param)} />
+                    </div>
 
                     {/* Colors */}
                     <LetterColor colorName={colorName} changeActiveColorName={(colorName) => setColorName(colorName)} />
@@ -132,7 +137,10 @@ export default function App() {
                   </AccordionDetails >
                 </Accordion >
               </div>
+
+
               {window.innerWidth < 992 ? <GalleryImageBottom /> : ""}
+
 
             </div>
           </div>

@@ -10,6 +10,79 @@
     padding: 0;
 }
 
+img.img-stand {
+    max-width: 200px;
+    filter: drop-shadow(1px 1px 1px #626262 );
+}
+
+.ctn-stand {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.ctn-list-color-change.row {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.slt-cl.col-2 {
+    height: 2rem;
+    margin: 2px;
+    cursor: pointer;
+    border-radius: 3px;
+    filter: drop-shadow(1px 1px 1px #ababab);
+}
+
+.ctn-change-color {
+    overflow: auto;
+}
+
+.letter-ccn {
+    width: 40px;
+    height: 40px;
+    /* background: #959595; */
+    margin: 3px;
+    display: flex;
+    justify-content: center;
+    border-radius: 100px;
+    justify-items: center;
+    align-items: center;
+    font-size: 24px;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+
+.line-ccn {
+    display: inline-flex;
+    /* max-width: 1000px; */
+    /* overflow-x: scroll; */
+}
+
+p.text-back {
+    word-break: break-word;
+    margin: 2vw 3vw;
+    text-align: center;
+}
+
+.showback {
+    background: url(https://res.cloudinary.com/hieudz/image/upload/v1642499459/puzzle-name/background-puzzle.jpg);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 9;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    font-family: cursive;
+    align-items: center;
+    font-size: 2vw;
+    color: #7e5026;
+}
+
 .MuiAccordionSummary-content.Mui-expanded.MuiAccordionSummary-contentGutters.css-o4b71y-MuiAccordionSummary-content {
     margin: 0;
 }
@@ -94,7 +167,7 @@ p.title-add-peg {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    margin-top: 2rem;
+
     padding: 0 1rem;
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
@@ -506,17 +579,20 @@ svg.active-color {
     display: -ms-inline-flexbox;
     display: inline-flex;
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
     padding: 1vw;
     background: url(https://res.cloudinary.com/hieudz/image/upload/v1642499459/puzzle-name/background-puzzle.jpg);
     border-radius: 2vw;
     background-size: cover;
     /* width: 100%; */
+    /* display: none; */
+    position: relative;
+    overflow: hidden;
 }
 
 .one-line {
@@ -524,8 +600,9 @@ svg.active-color {
     display: -ms-flexbox;
     display: flex;
     -webkit-box-align: end;
-        -ms-flex-align: end;
-            align-items: end;
+    -ms-flex-align: end;
+    align-items: end;
+    /* opacity: 0; */
     margin: 0.3vw;
 }
 
@@ -794,4 +871,24 @@ position: relative;
   
   .slider.round:before {
     border-radius: 50%;
+  }
+
+
+  
+/* Scroll 6 */
+.ctn-change-color::-webkit-scrollbar {
+    width: 12px;
+    height: 8px;
+    cursor: pointer;
+  }
+  .ctn-change-color::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: rgb(215 215 215);
+    cursor: pointer;
+  }
+  .ctn-change-color::-webkit-scrollbar-thumb {
+    /* background-color: #aab74d; */
+    background-image: linear-gradient( 21deg, #10abff, #1beabd);
+    border-radius: 10px;
+    cursor: pointer;
   }

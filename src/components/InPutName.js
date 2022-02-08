@@ -13,6 +13,8 @@ import { styled } from '@mui/material/styles';
 import CloseIcon from '@mui/icons-material/Close';
 import IconButton from '@mui/material/IconButton';
 import PropTypes from 'prop-types';
+import TextareaAutosize from '@mui/material/TextareaAutosize';
+import * as ColorToArray from "./ColorToArray";
 
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
@@ -57,14 +59,25 @@ function InputName(props) {
     const [maxLetter, setMaxLetter] = useState(false);
     const MaxLetter = constants.MaxLetter;
     const [expanded, setExpanded] = useState('panel1');
+    const [selectLetter, setSelectLetter] = useState([-1, -1]);
+
+    let colorName = props.colorName;
+    useEffect(() => {
+        let name = [...props.name];
+        name = name.map(item => item.map((item2, key2) => [item2[0], ColorToArray.keyToColorHex(constants[props.colorName], key2)]));
+        props.setName(name);
+
+    }, [colorName]);
     let changeLineName = (value, key) => {
         let arrValue = (value.length !== 0) ? value.match(/[a-zA-Z]+/g)[0].toLowerCase() : "";
         if (arrValue.length > MaxLetter) setMaxLetter(true)
         else if (arrValue.length > 0) {
             arrValue = arrValue.split("");
+            arrValue = arrValue.map((item, key) => [...item, ColorToArray.keyToColorHex(constants[colorName], key)])
             if (maxLetter === true) setMaxLetter(false)
             let namedefault = [...props.name];
             namedefault[key] = arrValue;
+            console.log(namedefault);
             props.setName(namedefault);
         }
         else if (value.length === 0) {
@@ -93,6 +106,16 @@ function InputName(props) {
         setOpen(false);
     }
     let animal = [...props.animal];
+    let changeLetterColor = (color) => {
+        let name = [...props.name];
+        name[selectLetter[0]][selectLetter[1]][1] = color;
+        // console.log(name);
+        props.setName(name);
+    }
+    let changeTextBack = (value) => {
+        props.setTextEngrave(value);
+        if (props.showBack === false) props.setShowBack(true);
+    }
     // console.log(props.name);
     return (
         <React.Fragment>
@@ -128,7 +151,7 @@ function InputName(props) {
 
                                 <p className='input-text'>
                                     <span className="input">
-                                        <input  type="text" placeholder="Name Here ..." onChange={(e) => changeLineName(e.target.value, key)} value={props.name[key].join("")} />
+                                        <input type="text" placeholder="Name Here ..." onChange={(e) => changeLineName(e.target.value, key)} value={props.name[key].map(linex => linex[0]).join("")} />
                                         <span>
                                         </span>
                                     </span>
@@ -165,6 +188,53 @@ function InputName(props) {
                             <span className="slider round"></span>
                         </label>
                     </div>
+
+                    <div className="ctn-add-peg">
+                        <p className="title-add-peg">Add the stand</p>
+                        <label className="switch">
+                            <input type="checkbox" onChange={props.setAddStand} />
+                            <span className="slider round"></span>
+                        </label>
+                    </div>
+                    {props.addStand === true ? <div className="ctn-stand">
+                        <img src="https://res.cloudinary.com/hieudz/image/upload/v1644292788/puzzle-name/chanpuzzlename.png" alt="stand" className="img-stand" />
+                    </div> : ""}
+
+
+                    <div className="ctn-add-peg">
+                        <p className="title-add-peg">Show back</p>
+                        <label className="switch">
+
+                            <input type="checkbox" onChange={props.setShowBack} checked={props.showBack} />
+                            <span className="slider round"></span>
+                        </label>
+                    </div>
+
+                    <div className="back-ave">
+                        <p className="title-khac">
+                            Engraving on the back
+                        </p>
+                        <TextareaAutosize onChange={(e) => changeTextBack(e.target.value)}
+                            aria-label="empty textarea"
+                            placeholder="Empty"
+                            style={{ width: "100%", height: 50, padding: 3 }}
+                        />
+
+                        <div className="ctn-change-color">
+                            {props.name.filter(item => item !== []).map((item, key) =>
+                                <div className="line-ccn" key={key}>
+                                    {item.map((item2, key2) => <div onClick={() => setSelectLetter([key, key2])} key={key2} style={{ border: `2px solid ${item2[1]}`, color: (selectLetter[0] === key && selectLetter[1] === key2) ? "#fff" : item2[1], background: (selectLetter[0] === key && selectLetter[1] === key2) ? item2[1] : "#fff" }} className='letter-ccn'>{item2[0]}</div>)}
+                                </div>
+                            )}
+                        </div>
+                        {(JSON.stringify(selectLetter) !== (JSON.stringify([-1, -1])) ? <div className="ctn-list-color-change row">
+                            {["#d41e2b", "#fc6141", "#ffc445", "#0dd28b", "#0384de", "#2134a6", "#ffb5b2", "#a398cd", "#fbfbfb", "#fbd4e0", "#ffcebd"].map((itemC, keyC) =>
+                                <div className="slt-cl col-2" onClick={() => changeLetterColor(itemC)} key={keyC} style={{ background: itemC }}></div>
+                            )}
+                        </div> : "")}
+
+                    </div>
+
 
                 </AccordionDetails>
             </Accordion>

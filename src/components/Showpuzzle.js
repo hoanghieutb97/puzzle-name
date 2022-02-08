@@ -9,8 +9,9 @@ const Showpuzzle = (props) => {
       let colorName = props.colorName;
       let animal = props.animal;
       let noneData = true;
-
+      let textEngrave = props.textEngrave;
       let WindowWidth = 0;
+      let showBack = props.showBack;
       if (window.innerWidth >= 992) WindowWidth = window.innerWidth * 0.75;
       else WindowWidth = window.innerWidth;
 
@@ -29,9 +30,10 @@ const Showpuzzle = (props) => {
             </div> : ""}
             {/* het animal trai */}
 
+
             {item.map((itemChil, keyChill) => <div className="onbe-letter" key={keyChill} >
-                  {constants[itemChil](ColorToArray.keyToColorHex(constants[colorName], keyChill), heightLetter)}
-                  {props.peg === true ? <img src="https://res.cloudinary.com/hieudz/image/upload/v1642838516/puzzle-name/peg.png" alt="peg" className="peg" style={{ top: PegPositon[itemChil].top + "%", left: PegPositon[itemChil].left + "%", width: heightLetter * 0.2 + "px" }} /> : ""}
+                  {constants[itemChil[0]](itemChil[1], heightLetter)}
+                  {props.peg === true ? <img src="https://res.cloudinary.com/hieudz/image/upload/v1642838516/puzzle-name/peg.png" alt="peg" className="peg" style={{ top: PegPositon[itemChil[[0]]].top + "%", left: PegPositon[itemChil[0]].left + "%", width: heightLetter * 0.2 + "px" }} /> : ""}
             </div>
             )}
 
@@ -46,7 +48,7 @@ const Showpuzzle = (props) => {
       </div >)
 
 
-      console.log(heightLetter);
+      // console.log(heightLetter);
 
       return (
             <div className="row" >
@@ -61,7 +63,15 @@ const Showpuzzle = (props) => {
                               </div>
                               :
                               <div className='ctn-all-line'>
+
                                     <div className="all-line">
+                                          {(showBack === true) ? <div className="showback">
+                                                <p className="text-back">
+                                                      {textEngrave}
+                                                </p>
+
+                                          </div> : ""}
+
                                           {(animal[0].length !== 0) ?
                                                 <div className="ctn-animal-show" >
                                                       {animal[0].map((item, key) => <div key={key} className="ctn-show-animal" style={styleAnimal} >

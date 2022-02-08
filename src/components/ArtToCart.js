@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Button from '@mui/material/Button';
 
 function ArtToCart(props) {
@@ -10,7 +10,7 @@ function ArtToCart(props) {
     const minText1 = 5;
     const mintext2 = 3;
     const minAnimal = 3;
-    let tinhTien = (name, p_line, p_text, minText1, mintext2, animal, p_animal, minAnimal) => {
+    let tinhTien = (name, p_line, p_text, minText1, mintext2, animal, p_animal, minAnimal, peg, addStand, textEngrave) => {
         name = name.sort(function (a, b) {
             return b.length - a.length;
         });
@@ -23,9 +23,15 @@ function ArtToCart(props) {
         }
 
         let giaChu = 2 * p_line + (name[1].length > 0 ? p_line : 0) + (name[2].length > 0 ? p_line : 0) + name[0].length * p_text + name[1].length * p_text + name[2].length * p_text - (name[0].length <= minText1 ? name[0].length * p_text : minText1 * p_text) - (name[1].length <= mintext2 ? name[1].length * p_text : mintext2 * p_text) - (name[2].length <= mintext2 ? name[2].length * p_text : mintext2 * p_text)
-        return giaChu + giaAnimal
+        if (peg === true) giaChu = giaChu + 3;
+        if (addStand === true) giaChu = giaChu + 5;
+        if (textEngrave !== "") giaChu=giaChu+4
+            return giaChu + giaAnimal
     }
-    let tongTien = tinhTien(name, p_line, p_text, minText1, mintext2, animal, p_animal, minAnimal);
+    let tongTien = tinhTien(name, p_line, p_text, minText1, mintext2, animal, p_animal, minAnimal, props.peg, props.addStand, props.textEngrave);
+    useEffect(() => {
+        props.setPrice(tongTien);
+    }, [tongTien]);
 
     return (
         <div className={props.className}>
@@ -47,7 +53,7 @@ function ArtToCart(props) {
                         You save: ${tongTien * 1.5} (60%)
                     </p>
                 </div>
-                <Button variant="contained" color="success" className='btn-add-to-cart'>Add To Cart </Button>
+                <Button variant="contained" color="success" className='btn-add-to-cart' onClick={props.addToCart}>Add To Cart </Button>
 
             </div>
         </div>

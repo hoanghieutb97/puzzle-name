@@ -8,10 +8,8 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import LetterColor from './components/LetterColor';
 import InputName from './components/InPutName';
-import AboutItemAndPolicy from './components/AboutItemAndPolicy';
 import ArtToCart from './components/ArtToCart';
 import GalleryImageBottom from "./components/GalleryImageBottom"
-
 
 
 export default function App() {
@@ -19,6 +17,10 @@ export default function App() {
   const [animal, setAnimal] = useState([[], [null, null], [null, null], [null, null], []]); // tren - 1-2 -3-duoi
   const [colorName, setColorName] = useState(constants.ListColor[0]);
   const [peg, setPeg] = useState(false);
+  const [showBack, setShowBack] = useState(false);
+  const [addStand, setAddStand] = useState(false);
+  const [textEngrave, setTextEngrave] = useState("");
+
   const [price, setPrice] = useState(0);
   const [expanded, setExpanded] = React.useState('panel1');
   const handleChange = (panel) => (event, newExpanded) => {
@@ -35,6 +37,7 @@ export default function App() {
     if (window.innerWidth >= 992) WindowWidth = window.innerWidth * 0.75;
     else WindowWidth = window.innerWidth;
     let widthRow = (texLine, animalLine) => {
+      texLine = texLine.map(item => item[0])
       let sum = 0;
       texLine.forEach(element => {
         sum = sum + constants.PegPositon[element].wph + 0.091;
@@ -65,7 +68,17 @@ export default function App() {
 
   }, [name, animal]);
 
-
+  let addToCart = () => {
+    let item = {
+      name: name,
+      animal: animal,
+      pet: peg,
+      textEngrave: textEngrave,
+      price: price,
+      stand: addStand
+    }
+    localStorage.item = JSON.stringify(item);
+  }
 
   let deleteLine = (key) => {
     if (0 <= key && key < 3) {
@@ -101,21 +114,21 @@ export default function App() {
 
       <div className="container-fluid mt-4">
       </div>
-      <div className={"container-fluid" +(window.innerWidth < 992 ?" p-0":"")}>
+      <div className={"container-fluid" + (window.innerWidth < 992 ? " p-0" : "")}>
         <div className="row">
           <div className="col-12">
-            {window.innerWidth < 992 ? <ArtToCart animal={animal} name={name} className="cart-mobile" /> : ""}
+            {window.innerWidth < 992 ? <ArtToCart textEngrave={textEngrave} addToCart={addToCart} peg={peg} addStand={addStand} setPrice={(value) => setPrice(value)} animal={animal} name={name} className="cart-mobile" /> : ""}
 
           </div>
           <div className="col-12 col-lg-9 po-sticky"  >
 
-            <Showpuzzle peg={peg} name={name} colorName={colorName} animal={animal} heightLetter={heightLetter} />
+            <Showpuzzle showBack={showBack} textEngrave={textEngrave} peg={peg} name={name} colorName={colorName} animal={animal} heightLetter={heightLetter} />
 
           </div>
           <div className="col-12 col-lg-3">
             <div className="row input-all" setx="input-all">
               <div className="col-12">
-                {window.innerWidth >= 992 ? <ArtToCart animal={animal} name={name} /> : ""}
+                {window.innerWidth >= 992 ? <ArtToCart textEngrave={textEngrave} addToCart={addToCart} peg={peg} addStand={addStand} setPrice={(value) => setPrice(value)} animal={animal} name={name} /> : ""}
 
               </div>
               <div className="col-12">
@@ -126,7 +139,7 @@ export default function App() {
                   <AccordionDetails>
                     {/* Text & figures */}
                     <div>
-                      <InputName setPeg={() => setPeg(!peg)} name={name} animal={animal} showAnimal={(nameAnimal, selectAnimal) => showAnimal(nameAnimal, selectAnimal)} deleteLine={(key) => deleteLine(key)} setName={(param) => setName(param)} />
+                      <InputName addStand={addStand} setAddStand={() => setAddStand(!addStand)} colorName={colorName} showBack={showBack} setShowBack={() => setShowBack(!showBack)} setTextEngrave={(value) => setTextEngrave(value)} setPeg={() => setPeg(!peg)} name={name} animal={animal} showAnimal={(nameAnimal, selectAnimal) => showAnimal(nameAnimal, selectAnimal)} deleteLine={(key) => deleteLine(key)} setName={(param) => setName(param)} />
                     </div>
 
                     {/* Colors */}
